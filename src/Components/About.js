@@ -1,31 +1,38 @@
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
 
-export default function About() {
+export default function About(props) {
 
-    const [myStyle, setmyStyle] = useState({
-        color: 'white',
-        backgroundColor: 'black'
-    })
+    // const [myStyle, setmyStyle] = useState({
+    //     color: 'white',
+    //     backgroundColor: 'black'
+    // })
 
-    const [btnText, setbtntext] = useState("Enable Light Mode")
-    const toggle = () => {
-        if (myStyle.color === "white") {
-            setmyStyle({
-                color: 'black',
-                backgroundColor: 'white'
-            })
+    let myStyle ={
+        color: props.mode === 'dark' ? 'white' : '#042743',
+        backgroundColor: props.mode === 'dark' ? 'rgb(36, 74, 104)' : 'white'
+      };
+      
 
-            setbtntext("Enable Dark Mode")
-        }
 
-        else{
-            setmyStyle({
-                color: 'white',
-                backgroundColor: 'black'
-            })
-            setbtntext("Enable Light Mode") 
-        }
-    }
+    // c onst [btnText, setbtntext] = useState("Enable Light Mode")
+    // const toggle = () => {
+    //     if (myStyle.color === "white") {
+    //         setmyStyle({
+    //             color: 'black',
+    //             backgroundColor: 'white'
+    //         })
+
+    //         setbtntext("Enable Dark Mode")
+    //     }
+
+    //     else{
+    //         setmyStyle({
+    //             color: 'white',
+    //             backgroundColor: 'black'
+    //         })
+    //         setbtntext("Enable Light Mode") 
+    //     }
+    // }
     return (
         <div className="container" style={myStyle}>
             <h1 className="my-3">About Us</h1>
@@ -33,7 +40,7 @@ export default function About() {
                 <div className="accordion-item" style={myStyle}>
                     <h2 className="accordion-header">
                         <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style={myStyle}>
-                            Accordion Item #1
+                            <strong>Analyze Your Text</strong>
                         </button>
                     </h2>
                     <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
@@ -45,7 +52,7 @@ export default function About() {
                 <div className="accordion-item" style={myStyle}>
                     <h2 className="accordion-header">
                         <button className="accordion-button collapsed" style={myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Accordion Item #2
+                            <strong>Free to use</strong>
                         </button>
                     </h2>
                     <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -57,7 +64,7 @@ export default function About() {
                 <div className="accordion-item" style={myStyle}>
                     <h2 className="accordion-header">
                         <button className="accordion-button collapsed" style={myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Accordion Item #3
+                            <strong>Browser Compatible</strong>
                         </button>
                     </h2>
                     <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -66,9 +73,6 @@ export default function About() {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="container">
-                <button type="button" className="btn btn-primary" onClick={toggle} >{btnText}</button>
             </div>
         </div>
     )
